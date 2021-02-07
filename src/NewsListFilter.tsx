@@ -12,8 +12,14 @@ export const NewsListFilter = () => {
     <>
       Filter:
       <select value={filter} onChange={updateFilter}>
+        <option value="cnn-headlines">CNN Headlines</option>
         <option value="cnn-world">CNN World</option>
+        <option value="cnn-us">CNN US</option>
         <option value="cnn-sports">CNN Sports</option>
+        <option value="cnn-politics">CNN Politics</option>
+        <option value="cnn-business">CNN Business</option>
+        <option value="cnn-entertainment">CNN Entertainment</option>
+        <option value="cnn-opinions">CNN Opinions</option>
       </select>
     </>
   );

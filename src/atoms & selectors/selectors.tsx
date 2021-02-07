@@ -13,7 +13,7 @@ export const filteredNewsListState = selector({
 
     let url = Atoms.RSS_URL_MAP.get(filter);
     if (url === undefined) {
-      url = "https://rss.app/feeds/KfbyOQkOttKtkLZq.xml";
+      url = "https://rss.app/feeds/zGG8egDOhD9ew9nb.xml";
     }
     const feed = await parser.parseURL(url);
     let newsList: Atoms.Item[] = [];
