@@ -9,22 +9,6 @@ export const NewsApp = () => {
     Selectors.filteredNewsListState
   );
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const feed = await parser.parseURL(RSS_URL);
-  //     console.log(feed);
-  //     setTitle(feed.title);
-  //     let newList: Item[] = [];
-  //     feed.items.forEach((item) => {
-  //       newList.push({
-  //         link: item.link,
-  //         title: item.title,
-  //       });
-  //     });
-  //     setItemList(newList);
-  //   })();
-  // }, []);
-
   switch (newsFeedLoadable.state) {
     case "hasValue":
       const myNewsFeed = newsFeedLoadable.contents;
@@ -32,6 +16,7 @@ export const NewsApp = () => {
         <>
           <NewsListFilter />
           <div>{myNewsFeed.title}</div>
+          {/* render news */}
           {myNewsFeed.list.map((item: Item, index: number) => {
             if (item === undefined) {
               return <div></div>;
