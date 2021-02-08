@@ -9,7 +9,7 @@ export const NewsListFilter = () => {
   const updateCompanyFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const currentNewsState = {
       company: e.currentTarget.value,
-      section: filter.section,
+      section: "headlines",
     }
     setFilter(currentNewsState);
   };

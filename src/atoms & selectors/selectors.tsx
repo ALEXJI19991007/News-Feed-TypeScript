@@ -17,6 +17,7 @@ export const filteredNewsListState = selector({
       url = "https://rss.app/feeds/zGG8egDOhD9ew9nb.xml";
     }
     const feed = await parser.parseURL(url);
+    // console.log(feed);
     let newsList: Atoms.Item[] = [];
     feed.items.forEach((item) => {
       newsList.push({
@@ -25,7 +26,7 @@ export const filteredNewsListState = selector({
       });
     });
     return {
-      title: feed.title,
+      title: feed.description,
       list: newsList,
     };
   },

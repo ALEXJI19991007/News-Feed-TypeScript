@@ -6,14 +6,6 @@ export interface Item {
   title?: string;
 }
 
-// let initialList: Item[] = [];
-
-// // This atom is our news feed list
-// export const newsListState: RecoilState<Item[]> = atom({
-//   key: "newsListState",
-//   default: initialList,
-// });
-
 // This atom is the current showing state
 interface NewsState {
   company: string;
