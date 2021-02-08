@@ -11,7 +11,8 @@ export const filteredNewsListState = selector({
   get: async ({ get }) => {
     const filter = get(Atoms.newsListFilterState);
 
-    let url = Atoms.RSS_URL_MAP.get(filter);
+
+    let url = Atoms.RSS_URL_MAP.get(`${filter.company}-${filter.section}`);
     if (url === undefined) {
       url = "https://rss.app/feeds/zGG8egDOhD9ew9nb.xml";
     }

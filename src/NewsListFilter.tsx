@@ -1,26 +1,37 @@
+import React from "react";
 import { useRecoilState } from "recoil";
 import * as Atoms from "./atoms & selectors/atoms";
+import { Sections } from "./Sections";
 
 export const NewsListFilter = () => {
   const [filter, setFilter] = useRecoilState(Atoms.newsListFilterState);
 
-  const updateFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFilter(e.currentTarget.value);
+  const updateCompanyFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const currentNewsState = {
+      company: e.currentTarget.value,
+      section: filter.section,
+    }
+    setFilter(currentNewsState);
+  };
+
+
+  const updateSectionFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const currentNewsState = {
+      company: filter.company,
+      section: e.currentTarget.value,
+    }
+    setFilter(currentNewsState);
   };
 
   return (
     <>
       Filter:
-      <select value={filter} onChange={updateFilter}>
-        <option value="cnn-headlines">CNN Headlines</option>
-        <option value="cnn-world">CNN World</option>
-        <option value="cnn-us">CNN US</option>
-        <option value="cnn-sports">CNN Sports</option>
-        <option value="cnn-politics">CNN Politics</option>
-        <option value="cnn-business">CNN Business</option>
-        <option value="cnn-entertainment">CNN Entertainment</option>
-        <option value="cnn-opinions">CNN Opinions</option>
+      <select value={filter.company} onChange={updateCompanyFilter}>
+        <option value="cnn">CNN</option>
+        <option value="abc">ABC</option>
       </select>
+      <Sections company={filter.company} section={filter.section} updateSectionFilter={updateSectionFilter}/>
+      
     </>
   );
 };
