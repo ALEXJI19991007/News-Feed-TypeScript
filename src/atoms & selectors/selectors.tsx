@@ -10,14 +10,12 @@ export const filteredNewsListState = selector({
   key: "filteredTodoListState",
   get: async ({ get }) => {
     const filter = get(Atoms.newsListFilterState);
-
-
-    let url = Atoms.RSS_URL_MAP.get(`${filter.company}-${filter.section}`);
+    let url = Atoms.RSS_URL_MAP.get(`${filter.source}-${filter.company}`);
     if (url === undefined) {
-      url = "https://rss.app/feeds/zGG8egDOhD9ew9nb.xml";
+      url = "https://rss.app/feeds/LDMgeOFCAYu4leA3.xml";
     }
     const feed = await parser.parseURL(url);
-    console.log(feed);
+    // console.log(feed);
     let newsList: Atoms.Item[] = [];
     feed.items.forEach((item) => {
       newsList.push({

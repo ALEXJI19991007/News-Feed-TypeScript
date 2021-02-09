@@ -1,37 +1,44 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import * as Atoms from "./atoms & selectors/atoms";
-import { Sections } from "./Sections";
+// import { Sections } from "./Sections";
 
 export const NewsListFilter = () => {
   const [filter, setFilter] = useRecoilState(Atoms.newsListFilterState);
 
-  const updateCompanyFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const updateSourceFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const currentNewsState = {
-      company: e.currentTarget.value,
-      section: "headlines",
-    }
+      source: e.currentTarget.value,
+      company: filter.company,
+    };
     setFilter(currentNewsState);
   };
 
-
-  const updateSectionFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const updateCompanyFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const currentNewsState = {
-      company: filter.company,
-      section: e.currentTarget.value,
-    }
+      source: filter.source,
+      company: e.currentTarget.value,
+    };
     setFilter(currentNewsState);
   };
 
   return (
     <>
       Filter:
-      <select value={filter.company} onChange={updateCompanyFilter}>
-        <option value="cnn">CNN</option>
-        <option value="abc">ABC</option>
+      <select value={filter.source} onChange={updateSourceFilter}>
+        <option value="bing">Bing</option>
+        <option value="google">Google</option>
+        <option value="yahoo">Yahoo</option>
       </select>
-      <Sections company={filter.company} section={filter.section} updateSectionFilter={updateSectionFilter}/>
-      
+      {/* <Sections source={filter.source} company={filter.company} updateSectionFilter={updateSectionFilter}/> */}
+      <select value={filter.company} onChange={updateCompanyFilter}>
+        <option value="headlines">Headlines</option>
+        <option value="tesla">Tesla</option>
+        <option value="google">Google</option>
+        <option value="facebook">Facebook</option>
+        <option value="amazon">Amazon</option>
+        <option value="linkedin">Linkedin</option>
+      </select>
     </>
   );
 };
